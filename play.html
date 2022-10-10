@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="play.css" />
+    <title>Game of Life</title>
+    <link
+      rel="icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/f/fe/Video-Game-Controller-Icon-IDV-green.svg"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div class="firstsection">
+      <h1 class="title"><a href="play.html">👾 Game Of Life</a></h1>
+      <div>
+        <button id="rules"><em>Rules</em></button>
+      </div>
+    </div>
+    <div class="secondsection">
+      <div id="canvas"></div>
+      <div class="controlPanel">
+        <div class="boxSelect">
+          <label for="boxColor">Box color :</label>
+          <input type="color" id="boxSelect" name="head" value="#921920" />
+        </div>
+
+        <label for="customRange1" class="form-label speed"
+          >Speed of Game:</label
+        >
+        <input
+          type="range"
+          class="form-range"
+          min="1"
+          max="60"
+          step="1"
+          id="customRange1"
+        />
+
+        <button type="button" id="start" class="btn btn-primary">
+          Status: Stop
+        </button>
+        <button type="button" class="btn btn-warning" id="nextStep">
+          Next
+        </button>
+        <button type="button" id="random" class="btn btn-dark">Random</button>
+        <button type="button" id="reset-game" class="btn btn-success">
+          Reset
+        </button>
+
+        <div class="selectBox">
+          <span>Neighbors to reproduce</span>
+          <select
+            id="reproduce"
+            class="form-select"
+            aria-label="Default select example"
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option selected value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
+        </div>
+        <div class="survivalall">
+          <label for="survival">Range of Survival:</label>
+          <div class="range">
+            <div class="min">
+              <span>Min:</span>
+              <input
+                type="number"
+                value="2"
+                id="minsur"
+                name="tentacles"
+                min="1"
+                max="8"
+              />
+            </div>
+            <div class="max">
+              <span>Max:</span>
+              <input
+                type="number"
+                value="3"
+                id="maxsur"
+                name="tentacles"
+                min="1"
+                max="8"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="thirdsection">
+      <div class="counter">
+        <h6>Original Lives:<span id="original">0</span></h6>
+        <h6>Remaining Lives:<span id="remaining">0</span></h6>
+        <h6>Generation:<span id="generation">0</span></h6>
+      </div>
+    </div>
+
+    <div class="modal">
+      <div class="rules">
+        <h1>Rules of Game of Life</h1>
+        <hr />
+        <ul class="rulecontent">
+          <li>
+            If a box has life and it has less than 2 neighbors. It dies of
+            loneliness. The box becomes lifeless next generation.
+          </li>
+          <li>
+            If a box has life and it has more than 3 neighbors. It dies of
+            overpopulation. The box becomes lifeless next generation.
+          </li>
+          <li>
+            If a box has life and it has 2-3 neighbors. Nothing changes for this
+            box.
+          </li>
+          <li>
+            If a box has no life and it has 3-neighbors, the box in next
+            generation fills with life because of reproduction.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.js"></script>
+    <script src="finalize-play.js"></script>
+  </body>
+</html>
